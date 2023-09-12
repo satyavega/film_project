@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Arr;
 use App\Models\Post;
-use App\Models\Genre;
+use App\Models\User;
 use App\Models\PostGenre;
-use App\Models\PostsGenre;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Validation\Rule;
@@ -23,8 +22,11 @@ class PostController extends Controller
 
     public function index()
     {
+        $totalUsers = User::where('role', 'user')->count();
+
         $posts = Post::all(); // Atau menggunakan query yang sesuai
-        return view('landing',['posts' => $posts], compact('posts'));
+        return view('landing',[
+            'posts' => $posts], compact('posts'));
     }
 
     public function dashboard(Request $request): View

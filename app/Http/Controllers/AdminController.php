@@ -13,10 +13,12 @@ use Illuminate\View\View;
     class AdminController extends Controller
     {
         public function AdminDashboard(){
-
-            return view('admin.index');
-
+            $totalUsers = User::where('role', 'user')->count();
+            return view('admin.index', [
+                'totalUsers' => $totalUsers,
+            ]);
         }
+
         public function AdminLogout(Request $request)
         {
             Auth::guard('web')->logout();

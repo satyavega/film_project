@@ -15,7 +15,7 @@
         }
     </style>
     @vite('resources/css/app.css')
-    <title>Admin Dashboard Laravel</title>
+    <title>Dashboard</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

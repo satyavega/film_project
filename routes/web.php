@@ -22,10 +22,6 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-// Route::get('/landing', function () {
-//     return view('landing');
-// })->middleware(['auth', 'verified'])->name('landing');
-
 Route::get('/landing', [PostController::class, 'index'])->name('posts');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -67,30 +63,3 @@ Route::get('check_slug', function () {
     $slug = SlugService::createSlug(App\Models\Post::class, 'slug', request('title'));
     return response()->json(['slug' => $slug]);
 });
-// Route::get('/tambah', function(){
-//     $post = Post::find(1);
-//     // echo $post->title;
-//     $genre = ['1','2'];
-//     $post->genres()->attach($genre);
-//     echo "sukses";
-// });
-// Route::get('/update', function(){
-//     $post = Post::find(1);
-//     // echo $post->title;
-//     $genre = ['3','5'];
-//     $post->genres()->sync($genre);
-//     echo "sukses";
-// });
-// Route::get('/delete', function(){
-//     $post = Post::find(1);
-//     // echo $post->title;
-//     $genre = ['3','5'];
-//     $post->genres()->detach();
-//     echo "sukses hapus data";
-// });
-// Route::get('/cek', function(){
-//     $genre = Genre::find(5);
-//     $post = ['1','2'];
-//     $genre->posts()->sync($post);
-//     echo "sukses tambah data";
-// });
